@@ -1,6 +1,7 @@
 package com.company.ruanman.httptest.test;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 
 import net.sf.json.JSONObject;
 
@@ -8,6 +9,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import com.company.news.Constants;
+import com.company.news.jsonform.TimeScheduleRelationJsonform;
 import com.company.news.jsonform.TrainingCourseJsonform;
 import com.company.news.rest.RestConstants;
 import com.company.ruanman.httptest.AbstractHttpTest;
@@ -82,6 +84,30 @@ public class TrainingCourseTest  extends AbstractHttpTest {
       form.setPrice(100d);
       form.setTime_length(50);
       form.setTitle("基础训练");
+
+
+      ArrayList list=new ArrayList();
+      for(int i=0;i<1;i++){
+        TimeScheduleRelationJsonform form1 =new TimeScheduleRelationJsonform();
+       // form1.setRelation_id(1l);
+        form1.setStart_time("14:00:00");
+        form1.setEnd_time("16:00:00");
+        form1.setTime_period(1);
+        form1.setDays("1,3,5");
+        form1.setType(1);
+        form1.setId(4l);
+        list.add(form1);
+        form1 =new TimeScheduleRelationJsonform();
+//        form1.setRelation_id(1l);
+        form1.setStart_time("14:00:00");
+        form1.setEnd_time("16:00:00");
+        form1.setTime_period(1);
+        form1.setDays("1,3,5");
+        form1.setType(1);
+        form1.setId(5l);
+        list.add(form1);
+      }
+      form.setTime_list(list);
      // form.setId(1l);
       String json=JSONUtils.getJsonString(form);
       HttpUtils.printjson(json);

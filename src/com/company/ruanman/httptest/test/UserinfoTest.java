@@ -74,7 +74,7 @@ public class UserinfoTest extends AbstractHttpTest {
       String json=JSONUtils.getJsonString(form);
       HttpUtils.printjson(json);
       ByteArrayInputStream input=new ByteArrayInputStream(json.getBytes(Constants.Charset));
-      PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/userinfo/modify.json"+this.addParameter_JSESSIONID(),input,TestConstants.contentType );
+      PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/userinfo/modify.json"+this.addParameter_JSESSIONID()+"&verify=marathon",input,TestConstants.contentType );
       request.setParameter(RestConstants.Return_JSESSIONID, getLoginSessionid());
       WebResponse response = tryGetResponse(conversation, request );
        

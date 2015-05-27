@@ -4,6 +4,7 @@ import com.company.ruanman.httptest.test.TimeScheduleRelationTest;
 import com.company.ruanman.httptest.test.TrainingCourseTest;
 import com.company.ruanman.httptest.test.TraningPlanTest;
 import com.company.ruanman.httptest.test.UploadFileTest;
+import com.company.ruanman.httptest.test.UserinfoBusinessTest;
 import com.company.ruanman.httptest.test.UserinfoTest;
 
 public class MainTest {
@@ -15,6 +16,7 @@ public class MainTest {
   public static void main(String[] args) throws Exception {
     {
       UserinfoTest.main(null);
+      UserinfoBusinessTest.main(null);
       UploadFileTest.main(null);
       TraningPlanTest.main(null);
       TrainingCourseTest.main(null);
