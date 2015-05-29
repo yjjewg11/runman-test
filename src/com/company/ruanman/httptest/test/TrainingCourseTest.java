@@ -36,6 +36,10 @@ public class TrainingCourseTest  extends AbstractHttpTest {
     o.testTrainingCourseGetSuccess();
     o.testTrainingCourseMySuccess();
     o.testTrainingCoursequeryPublishSuccess();
+//    o.testTrainingCourseStatusRequestSuccess();
+//    o.testTrainingCourseStatusPaySuccess();
+//    o.testTrainingCourseStatusCompleteSuccess();
+    
   }
   
 
@@ -60,6 +64,7 @@ public class TrainingCourseTest  extends AbstractHttpTest {
       HttpUtils.println(conversation, request, response);
       assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
   }
+  
   public void testTrainingCourseGetSuccess() throws Exception {
     if(data_id==null)data_id="1";
     GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/trainingCourse/"+data_id+".json"+user.addParameter_JSESSIONID());
@@ -125,4 +130,31 @@ public class TrainingCourseTest  extends AbstractHttpTest {
 //
 //      assertTrue( "Login not rejected", response.getText().indexOf( "Login failed" ) != -1 );
   }
+//  
+//  
+//  public void testTrainingCourseStatusRequestSuccess() throws Exception {
+//    if(data_id==null)data_id="1";
+//    PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/trainingCourse/status/request/"+data_id+".json"+user.addParameter_JSESSIONID());
+//    WebConversation     conversation = new WebConversation();
+//      WebResponse response = tryGetResponse(conversation, request );
+//      HttpUtils.println(conversation, request, response);
+//      assertTrue( "POST-成功", response.getText().indexOf( "success" ) != -1 );
+//  }
+//
+//  public void testTrainingCourseStatusPaySuccess() throws Exception {
+//    if(data_id==null)data_id="1";
+//    PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/trainingCourse/status/pay/"+data_id+".json"+user.addParameter_JSESSIONID());
+//    WebConversation     conversation = new WebConversation();
+//      WebResponse response = tryGetResponse(conversation, request );
+//      HttpUtils.println(conversation, request, response);
+//      assertTrue( "POST-成功", response.getText().indexOf( "success" ) != -1 );
+//  }
+//  public void testTrainingCourseStatusCompleteSuccess() throws Exception {
+//    if(data_id==null)data_id="1";
+//    PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/trainingCourse/status/complete/"+data_id+".json"+user.addParameter_JSESSIONID());
+//    WebConversation     conversation = new WebConversation();
+//      WebResponse response = tryGetResponse(conversation, request );
+//      HttpUtils.println(conversation, request, response);
+//      assertTrue( "POST-成功", response.getText().indexOf( "success" ) != -1 );
+//  }
 }

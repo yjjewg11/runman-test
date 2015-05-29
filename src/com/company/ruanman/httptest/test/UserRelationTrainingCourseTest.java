@@ -8,6 +8,7 @@ import junit.framework.TestSuite;
 import com.company.news.Constants;
 import com.company.news.jsonform.UserRelationTrainingCourseJsonform;
 import com.company.news.rest.RestConstants;
+import com.company.news.rest.util.TimeUtils;
 import com.company.ruanman.httptest.AbstractHttpTest;
 import com.company.ruanman.httptest.HttpUtils;
 import com.company.ruanman.httptest.JSONUtils;
@@ -27,9 +28,12 @@ public class UserRelationTrainingCourseTest  extends AbstractHttpTest {
    */
   public static void main(String args[]) throws Exception {
     UserRelationTrainingCourseTest o=new UserRelationTrainingCourseTest();
+   // o.testUserRelationTrainingCourseSaveSuccess();
     o.testUserRelationTrainingCourseSaveSuccess();
-    o.testUserRelationTrainingCourseQuerySuccess();
-    o.testUserRelationTrainingCourseGetSuccess();
+    o.testMyTrainingCourseQueryByCourseSuccess();
+    o.testUserRelationTrainingCoursequerysubscribemySuccess();
+    o.testUserRelationTrainingCoursequerymyCoursesalesSuccess();
+  //  o.testUserRelationTrainingCourseGetSuccess();
   }
   
 
@@ -40,9 +44,29 @@ public class UserRelationTrainingCourseTest  extends AbstractHttpTest {
   public static Test suite() {
       return new TestSuite( UserRelationTrainingCourseTest.class );
   }
-  public void testUserRelationTrainingCourseQuerySuccess() throws Exception {
-    GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/userRelationTrainingCourse/query.json");
-    request.setParameter("JSESSIONID", user.sessionid);
+  public void testMyTrainingCourseQueryByCourseSuccess() throws Exception {
+    GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/userRelationTrainingCourse/query/byCourse.json");
+    request.setParameter("JSESSIONID", user.getLoginSessionid());
+    request.setParameter("course_id", "1");
+    request.setParameter("time_schedule_id", "1");
+    WebConversation     conversation = new WebConversation();
+      WebResponse response = tryGetResponse(conversation, request );
+      HttpUtils.println(conversation, request, response);
+      assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
+  }
+  public void testUserRelationTrainingCoursequerysubscribemySuccess() throws Exception {
+    GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/userRelationTrainingCourse/query/subscribe/my.json");
+    request.setParameter("JSESSIONID", user.getLoginSessionid());
+    request.setParameter("course_id", "1");
+    request.setParameter("time_schedule_id", "1");
+    WebConversation     conversation = new WebConversation();
+      WebResponse response = tryGetResponse(conversation, request );
+      HttpUtils.println(conversation, request, response);
+      assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
+  }
+  public void testUserRelationTrainingCoursequerymyCoursesalesSuccess() throws Exception {
+    GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/userRelationTrainingCourse/query/myCourse/sales.json");
+    request.setParameter("JSESSIONID", user.getLoginSessionid());
     request.setParameter("course_id", "1");
     request.setParameter("time_schedule_id", "1");
     WebConversation     conversation = new WebConversation();
@@ -67,6 +91,7 @@ public class UserRelationTrainingCourseTest  extends AbstractHttpTest {
       UserRelationTrainingCourseJsonform form =new UserRelationTrainingCourseJsonform();
       form.setCourse_id(1l);
       form.setTime_schedule_id(1l);
+      form.setCourse_time(TimeUtils.getCurrentTimestamp());
       String json=JSONUtils.getJsonString(form);
       HttpUtils.printjson(json);
       ByteArrayInputStream input=new ByteArrayInputStream(json.getBytes(Constants.Charset));

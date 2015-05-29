@@ -33,7 +33,11 @@ public class TraningPlanTest  extends AbstractHttpTest {
     o.testTrainingPlanSaveSuccess();
     o.testTrainingPlanGetSuccess();
     o.testTrainingPlanMySuccess();
+    o.teststatusRequest();
+    o.teststatuspay();
+    o.teststatuscomplete();
     o.testTrainingPlanqueryPublishSuccess();
+    o.testTrainingPlanquerytrainermy();
   }
   
 
@@ -53,7 +57,14 @@ public class TraningPlanTest  extends AbstractHttpTest {
       assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
   }
   public void testTrainingPlanqueryPublishSuccess() throws Exception {
-    GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/trainingPlan/queryPublish.json"+user.addParameter_JSESSIONID());
+    GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/trainingPlan/query/publish.json"+user.addParameter_JSESSIONID());
+    WebConversation     conversation = new WebConversation();
+      WebResponse response = tryGetResponse(conversation, request );
+      HttpUtils.println(conversation, request, response);
+      assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
+  }
+  public void testTrainingPlanquerytrainermy() throws Exception {
+    GetMethodWebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/trainingPlan/query/trainer/my.json"+user.addParameter_JSESSIONID());
     WebConversation     conversation = new WebConversation();
       WebResponse response = tryGetResponse(conversation, request );
       HttpUtils.println(conversation, request, response);
@@ -98,5 +109,31 @@ public class TraningPlanTest  extends AbstractHttpTest {
           JSONObject jsonObject = JSONObject.fromObject(response.getText());
           this.data_id=(String)jsonObject.getString("data_id");
          }
+  }
+  
+  
+  public void teststatusRequest() throws Exception {
+    if(data_id==null)data_id="1";
+    PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/trainingPlan/status/request/"+data_id+".json"+user.addParameter_JSESSIONID());
+    WebConversation     conversation = new WebConversation();
+      WebResponse response = tryGetResponse(conversation, request );
+      HttpUtils.println(conversation, request, response);
+      assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
+  }
+  public void teststatuspay() throws Exception {
+    if(data_id==null)data_id="1";
+    PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/trainingPlan/status/pay/"+data_id+".json"+user.addParameter_JSESSIONID());
+    WebConversation     conversation = new WebConversation();
+      WebResponse response = tryGetResponse(conversation, request );
+      HttpUtils.println(conversation, request, response);
+      assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
+  }
+  public void teststatuscomplete() throws Exception {
+    if(data_id==null)data_id="1";
+    PostMethodWebRequest  request = new PostMethodWebRequest( TestConstants.host+"rest/trainingPlan/status/complete/"+data_id+".json"+user.addParameter_JSESSIONID());
+    WebConversation     conversation = new WebConversation();
+      WebResponse response = tryGetResponse(conversation, request );
+      HttpUtils.println(conversation, request, response);
+      assertTrue( "GET-成功", response.getText().indexOf( "success" ) != -1 );
   }
 }
