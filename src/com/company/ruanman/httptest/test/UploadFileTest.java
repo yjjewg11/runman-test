@@ -88,7 +88,7 @@ public class UploadFileTest extends AbstractHttpTest {
         InputStream  stream=response.getInputStream();
         String disposition=response.getHeaderField("Content-Disposition");
         String filename=HttpUtils.getFileNameByResponseHeader(disposition);
-        File file=new File("H:/work_资料/"+(fileNumber++)+filename);
+        File file=new File("H:/work_资料/down/"+(fileNumber++)+filename);
         FileOutputStream fileout = null;   
         int bytesRead = 0;
         byte[] buffer = new byte[8192];
