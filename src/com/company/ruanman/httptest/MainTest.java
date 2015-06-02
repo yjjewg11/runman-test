@@ -8,7 +8,7 @@ import com.company.ruanman.httptest.test.UserinfoBusinessTest;
 import com.company.ruanman.httptest.test.UserinfoTest;
 
 public class MainTest {
-
+ 
   /**
    * @param args
    * @throws Exception
