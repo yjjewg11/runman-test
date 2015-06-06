@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/runman"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/runman-data-model"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/httpunit.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/js-1.6R5.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/json-lib-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/jtidy-4aug2000r7-dev.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/mail-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/nekohtml-0.9.5.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/servlet-api-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/xercesImpl-2.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/mywork/work/code_lib/ruanman-test_lib/lib/xmlParserAPIs-2.6.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

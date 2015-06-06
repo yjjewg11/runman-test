@@ -19,7 +19,7 @@ import com.meterware.httpunit.WebResponse;
 public class UploadFileTest extends AbstractHttpTest {
   public UserinfoTest user= new UserinfoTest();
   public  String imgurl=null;
-  public  Integer fileNumber=0;
+  public  int fileNumber=0;
   public static void main(String args[]) throws Exception {
   //  junit.textui.TestRunner.run( new TestSuite( UploadFileTest.class ));
     UploadFileTest o=new UploadFileTest();
@@ -52,7 +52,8 @@ public class UploadFileTest extends AbstractHttpTest {
   public void uploadImg(String url) throws Exception {
     WebConversation     conversation = new WebConversation();
     //GetMethodWebRequest
-    File file=new File("H:/work_资料/myhead.jpg");
+   // File file=new File("H:/work_资料/myhead.jpg");
+    File file=new File("c:\\share\\test1.png");
     
 //    WebForm webForm=new WebForm();
   
