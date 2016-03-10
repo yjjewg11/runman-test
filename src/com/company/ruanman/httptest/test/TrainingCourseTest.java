@@ -32,9 +32,9 @@ public class TrainingCourseTest  extends AbstractHttpTest {
    */
   public static void main(String args[]) throws Exception {
     TrainingCourseTest o=new TrainingCourseTest();
-    o.testTrainingCourseSaveSuccess();
-    o.testTrainingCourseGetSuccess();
-    o.testTrainingCourseMySuccess();
+//    o.testTrainingCourseSaveSuccess();
+//    o.testTrainingCourseGetSuccess();
+//    o.testTrainingCourseMySuccess();
     o.testTrainingCoursequeryPublishSuccess();
 //    o.testTrainingCourseStatusRequestSuccess();
 //    o.testTrainingCourseStatusPaySuccess();

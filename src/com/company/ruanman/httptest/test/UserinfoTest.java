@@ -40,11 +40,12 @@ public class UserinfoTest extends AbstractHttpTest {
   public static void main(String args[]) throws Exception {
       //junit.textui.TestRunner.run( suite() );
     UserinfoTest o=new UserinfoTest();
-   o.testLoginFailed();
-   o.testLoginSuccess();
-   o.testgetUserInfoSuccess();
-    o.testUserModifySuccess();
-   o.testlogoutSuccess();
+    o.testgetSuccess();
+//   o.testLoginFailed();
+//   o.testLoginSuccess();
+//   o.testgetUserInfoSuccess();
+//    o.testUserModifySuccess();
+//   o.testlogoutSuccess();
   }
   
   /**
@@ -69,7 +70,7 @@ public class UserinfoTest extends AbstractHttpTest {
       form.setCity("成都");
       form.setIdentity_card("1234567890123456");
       form.setContext("我就是我，不一样的烟火");
-      form.setSex(0); 
+//      form.setSex(0); 
       form.setReal_name("猜猜猜");
       String json=JSONUtils.getJsonString(form);
       HttpUtils.printjson(json);
@@ -148,6 +149,31 @@ public class UserinfoTest extends AbstractHttpTest {
       //GetMethodWebRequest
       WebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/userinfo/getUserinfo.json" );
       request.setParameter("JSESSIONID",  this.sessionid);
+        WebResponse response = tryGetResponse(conversation, request );
+//      WebForm loginForm = response.getForms()[0];
+//      request = loginForm.getRequest();
+//      response = conversation.getResponse( request );
+        HttpUtils.println(conversation, request, response);
+        assertTrue( "登录-成功", response.getText().indexOf( "success" ) != -1 );
+        
+        
+      if (response.getContentType().equals("application/json")) {
+        JSONObject jsonObject = JSONObject.fromObject(response.getText());
+        this.sessionid=(String)jsonObject.get("JSESSIONID");
+        System.out.println("JSESSIONID="+this.sessionid); // Benju
+       }
+//
+//      assertTrue( "Login not rejected", response.getText().indexOf( "Login failed" ) != -1 );
+  }
+  /**
+   * Verifies that submitting the login form without entering a name results in a page
+   * containing the text "Login failed"
+   **/
+  public void testgetSuccess() throws Exception {
+      WebConversation     conversation = new WebConversation();
+      //GetMethodWebRequest
+      WebRequest  request = new GetMethodWebRequest( TestConstants.host+"rest/userinfo/get.json" );
+      request.setParameter("uuid",  "1");
         WebResponse response = tryGetResponse(conversation, request );
 //      WebForm loginForm = response.getForms()[0];
 //      request = loginForm.getRequest();
